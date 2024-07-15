@@ -1,0 +1,31 @@
+body {
+    background-color: bisque;
+}
+
+img {
+    width: 150px;
+    height: 150px;
+}
+
+
+.container {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+div {
+    font-size: 20px;
+}
+
+button {
+    padding: 10px 30px;
+    border-radius: 10px;
+    background-color: #D0B8A8;
+    color: aliceblue;
+    font-size: 20px;
+
+}

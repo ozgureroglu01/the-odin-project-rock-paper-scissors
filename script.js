@@ -15,37 +15,59 @@ function getHumanChoice() {
 
 }
 
+
 let humanScore = 0;
 let computerScore = 0;
 let drawScore = 0;
 
+const resultDiv = document.querySelector("#results");
+
 function playRound(humanChoice, computerChoice) {
     if (humanChoice === computerChoice) {
-        console.log("It's a draw!");
+        resultDiv.innerText = "It's a draw!";
         return drawScore++;
     } else if (humanChoice === "rock" && computerChoice === "scissors") {
-        console.log("You win! Rock beats Scissors!");
+        resultDiv.innerText = "You win! Rock beats Scissors!";
         return humanScore++;
     } else if (humanChoice === "paper" && computerChoice === "rock") {
-        console.log("You win! Paper beats rock!");
+        resultDiv.innerText = "You win! Paper beats rock!";
         return humanScore++;
     } else if (humanChoice === "scissors" && computerChoice === "paper") {
-        console.log("You win! Scissors beats paper!");
+        resultDiv.innerText = "You win! Scissors beats paper!";
         return humanScore++;
     } else {
-        console.log(`You lose! ${computerChoice} beats ${humanChoice}!`);
+        resultDiv.innerText = `You lose! ${computerChoice} beats ${humanChoice}!`;
         return computerScore++;
     }
 }
 
+const announceWinner = document.querySelector("#winner");
 
-function playGame(rounds) {
-    for (let i = 0; i < rounds; i++) {
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
-        playRound(humanSelection, computerSelection);
-    }
-    console.log(`Player score: ${humanScore}, Computer score ${computerScore}, Draw: ${drawScore}`);
-}
+const rock = document.querySelector("#rock");
+rock.addEventListener("click", () => {
+    playRound("rock", getComputerChoice())
+    announceWinner.innerText = `Player score: ${humanScore} \nComputer score ${computerScore} \nDraw: ${drawScore}`;
+});
 
-playGame(5);
+const paper = document.querySelector("#paper");
+paper.addEventListener("click", () => {
+    playRound("paper", getComputerChoice())
+    announceWinner.innerText = `Player score: ${humanScore} \nComputer score ${computerScore} \nDraw: ${drawScore}`;
+
+});
+
+const scissors = document.querySelector("#scissors")
+scissors.addEventListener("click", () => {
+    playRound("scissors", getComputerChoice())
+    announceWinner.innerText = `Player score: ${humanScore} \nComputer score ${computerScore} \nDraw: ${drawScore}`;
+});
+
+
+const replay = document.querySelector("#restart");
+replay.addEventListener("click", () => {
+    resultDiv.innerText = "";
+    announceWinner.innerText = "";
+    humanScore = 0;
+    computerScore = 0;
+    drawScore = 0;
+});
