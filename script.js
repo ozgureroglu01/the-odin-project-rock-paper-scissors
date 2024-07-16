@@ -46,28 +46,53 @@ const announceWinner = document.querySelector("#winner");
 const rock = document.querySelector("#rock");
 rock.addEventListener("click", () => {
     playRound("rock", getComputerChoice())
-    announceWinner.innerText = `Player score: ${humanScore} \nComputer score ${computerScore} \nDraw: ${drawScore}`;
+    if (humanScore === 5) {
+        alert(`PLAYER WİNS ! \nPlayer score: ${humanScore} \nComputer score ${computerScore} \nDraw: ${drawScore}`);
+        playAgain();
+    }
+    else if (computerScore === 5) {
+        alert(`COMPUTER WİNS ! \nPlayer score: ${humanScore} \nComputer score ${computerScore} \nDraw: ${drawScore}`);
+        playAgain();
+    }
 });
 
 const paper = document.querySelector("#paper");
 paper.addEventListener("click", () => {
     playRound("paper", getComputerChoice())
-    announceWinner.innerText = `Player score: ${humanScore} \nComputer score ${computerScore} \nDraw: ${drawScore}`;
-
+    if (humanScore === 5) {
+        alert(`PLAYER WİNS ! \nPlayer score: ${humanScore} \nComputer score ${computerScore} \nDraw: ${drawScore}`);
+        playAgain();
+    }
+    else if (computerScore === 5) {
+        alert(`COMPUTER WİNS ! \nPlayer score: ${humanScore} \nComputer score ${computerScore} \nDraw: ${drawScore}`);
+        playAgain();
+    }
 });
 
 const scissors = document.querySelector("#scissors")
 scissors.addEventListener("click", () => {
     playRound("scissors", getComputerChoice())
-    announceWinner.innerText = `Player score: ${humanScore} \nComputer score ${computerScore} \nDraw: ${drawScore}`;
+    if (humanScore === 5) {
+        alert(`PLAYER WİNS ! \nPlayer score: ${humanScore} \nComputer score ${computerScore} \nDraw: ${drawScore}`);
+        playAgain();
+    }
+    else if (computerScore === 5) {
+        alert(`COMPUTER WİNS ! \nPlayer score: ${humanScore} \nComputer score ${computerScore} \nDraw: ${drawScore}`);
+        playAgain();
+    }
 });
 
-
-const replay = document.querySelector("#restart");
-replay.addEventListener("click", () => {
+function restart() {
     resultDiv.innerText = "";
     announceWinner.innerText = "";
     humanScore = 0;
     computerScore = 0;
     drawScore = 0;
-});
+}
+function playAgain() {
+    const confirmPlayAgain = confirm("Would you like to play again ?");
+    if (confirmPlayAgain == true) {
+        restart();
+    }
+}
+
